@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Bet History</h2>
+<table class="table">
+  <tr><th>Game</th><th>Bet</th><th>Amount</th><th>Result</th><th>Payout</th></tr>
+  {% for b in bets %}
+  <tr>
+    <td>{{ b['team1'] }} vs {{ b['team2'] }}</td>
+    <td>{{ b['choice'] }}</td>
+    <td>{{ b['amount'] }}</td>
+    <td>{{ b['result'] }}</td>
+    <td>{{ b['payout'] if b['payout'] else 0 }}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}
