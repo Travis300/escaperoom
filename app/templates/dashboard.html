@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Hello {{ user['username'] }}!</h2>
+<p>Balance: {{ user['balance'] }} coins</p>
+{% if trivia %}
+<div class="alert alert-secondary">Trivia: {{ trivia }}</div>
+{% endif %}
+<h3>Upcoming Games</h3>
+<table class="table">
+  <tr><th>Sport</th><th>Matchup</th><th>Odds</th><th>Bet</th></tr>
+  {% for g in games %}
+  <tr>
+    <td>{{ g['sport'] }}</td>
+    <td>{{ g['team1'] }} vs {{ g['team2'] }}</td>
+    <td>{{ g['team1'] }} {{ g['odds_team1'] }}, {{ g['team2'] }} {{ g['odds_team2'] }}</td>
+    <td>
+      <form method="post" action="{{ url_for('place_bet', game_id=g['id']) }}" class="d-flex">
+        <input type="number" name="amount" min="1" class="form-control form-control-sm me-1" placeholder="Amt">
+        <input type="hidden" name="bet_type" value="moneyline">
+        <select name="choice" class="form-select form-select-sm me-1">
+          <option value="{{ g['team1'] }}">{{ g['team1'] }}</option>
+          <option value="{{ g['team2'] }}">{{ g['team2'] }}</option>
+        </select>
+        <button class="btn btn-primary btn-sm">Bet</button>
+      </form>
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}

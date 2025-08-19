@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Leaderboard</h2>
+<table class="table">
+  <tr><th>User</th><th>Balance</th></tr>
+  {% for l in leaders %}
+  <tr><td>{{ l['username'] }}</td><td>{{ l['balance'] }}</td></tr>
+  {% endfor %}
+</table>
+{% endblock %}
