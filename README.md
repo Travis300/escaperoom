@@ -10,12 +10,24 @@ A production-ready Discord escape-room experience built with `discord.py` 2.x an
 - ✅ Optional DM or private-thread delivery per guild, configurable via `/escape config`.
 - ✅ YAML-driven content with schema validation and unit tests.
 
+## Downloading the Project
+
+You can obtain the bot source in two common ways:
+
+1. **Clone with Git** (recommended for contributing or staying up to date)
+   ```bash
+   git clone https://github.com/<your-account>/escaperoom.git
+   cd escaperoom
+   ```
+
+2. **Download the ZIP**
+   - Visit your repository hosting page (e.g., GitHub) and click **Code → Download ZIP**.
+   - Extract the archive and open it in your editor or terminal of choice.
+
 ## Quickstart
 
-1. **Clone & Install**
+1. **Set Up the Environment**
    ```bash
-   git clone <your-fork-url>
-   cd escaperoom
    python3.11 -m venv .venv
    source .venv/bin/activate
    pip install -r requirements.txt
