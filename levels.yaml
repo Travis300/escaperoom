@@ -1,0 +1,161 @@
+settings:
+  hint_interval_minutes: 10
+  dm_mode: true
+levels:
+  - id: 1
+    title: "Welcome to the Vault"
+    description: "Your first key is hidden in plain sight…"
+    prompt_embed:
+      title: "Level 1: The Greeting"
+      description: "Type `/escape answer <your guess>` when ready.\nLook closely at punctuation."
+      footer: "The network smiles back."
+    answers: ["hello", "hi there"]
+    hidden_clues:
+      - "Acrostic in the description spells 'HELLO'."
+      - "Zero-width spaces encode 'hi there'."
+    timed_hints:
+      - "Count the first letters of each line."
+      - "Try pasting text into a zero-width detector."
+    forward_seeds:
+      - "Remember 'UTC' for later."
+  - id: 2
+    title: "Base Beginnings"
+    description: "c2VhcmNoIGZvciBiYXNlNjQ="
+    answers: ["search for base64", "base64", "decode base64"]
+    hidden_clues:
+      - "ROT13 of the title is 'Onfr Orttvatf'."
+      - "The word 'search' hides as every second letter of 'c2VhcmNo'."
+    timed_hints:
+      - "Decode the description."
+      - "There may be multiple correct phrasings."
+    forward_seeds:
+      - "Not all encodings are base64."
+  - id: 3
+    title: "Time Drift"
+    description: "`15:07 -> ???? (remember UTC from earlier)`"
+    prompt_embed:
+      title: "Level 3: Sync Issues"
+      description: "The server timestamp is in UTC; the post was scheduled for New York."
+      footer: "Clock drift is a clue."
+    answers: ["11:07", "1107", "11 07"]
+    hidden_clues:
+      - "Footnote initial letters read 'EST'."
+      - "The colon is offset by four spaces elsewhere."
+    timed_hints:
+      - "Convert 15:07 UTC to Eastern Time (no DST)."
+      - "Subtract four hours."
+    forward_seeds:
+      - "Offsets matter for coordinates too."
+  - id: 4
+    title: "Packet Poetry"
+    description: |
+      R0VDIE1FIFNFQ1JFVDoKcGluZy5waW5nLnBvbmcuCgpJbiB0aGUgcGFja2V0IGhlYWRlcj8=
+    answers: ["ping", "ping pong", "ping.ping.pong"]
+    hidden_clues:
+      - "The description is base64 of three lines; decode it."
+      - "Each line's first letters spell 'GSP'."
+      - "Periods hint at repeating a word."
+    timed_hints:
+      - "Decode, then read only the words before punctuation."
+      - "The command responds with the same word twice."
+    forward_seeds:
+      - "Not every echo replies identically."
+  - id: 5
+    title: "Hexed Header"
+    description: "48 54 54 50 2f 31 2e 31 204f 4b 3f"
+    answers: ["http/1.1 ok", "http 1.1 ok", "http ok"]
+    hidden_clues:
+      - "Numbers are hexadecimal ASCII codes."
+      - "The trailing question mark hints at the status text."
+      - "The word 'header' matches HTTP."
+    timed_hints:
+      - "Convert the numbers from hex to text."
+      - "Browsers look for a status like 200 OK."
+    forward_seeds:
+      - "Headers lead to bodies—think shells."
+  - id: 6
+    title: "Archive Artifact"
+    description: |
+      ```
+      PK\u0003\u0004??manifest.json??
+      ```
+    answers: ["zip", "zip archive", "pkzip"]
+    hidden_clues:
+      - "'PK' is the magic number for ZIP archives."
+      - "The question marks reflect missing bytes."
+      - "Manifest.json lives inside many bundles."
+    timed_hints:
+      - "Look up file signatures (magic numbers)."
+      - "What format starts with bytes 50 4B?"
+    forward_seeds:
+      - "Archives sometimes hide coordinates."
+  - id: 7
+    title: "Lost Coordinates"
+    description: "N 40° 45.?9', W 73° 59.?5'"
+    prompt_embed:
+      title: "Level 7: Glitched Map"
+      description: "Use the forward seeds. The missing digits are hidden in zero-width characters."
+      footer: "Align the offsets from earlier."
+    answers: ["40.7589,-73.9855", "40.7589 -73.9855", "40.7589 - 73.9855"]
+    hidden_clues:
+      - "Zero-width characters encode '8' and '8'."
+      - "Times Square coordinates match the clue."
+      - "Previous UTC hint tells you to adjust."
+    timed_hints:
+      - "Copy and paste the description into a zero-width character inspector."
+      - "Insert the missing digits and convert to decimal degrees."
+    forward_seeds:
+      - "Billboards stream endless data."
+  - id: 8
+    title: "Stream Snippet"
+    description: |
+      ```python
+      def checksum(data: bytes) -> int:
+          return sum(data) % 256
+
+      payload = b"lvl9seed:????"
+      print(checksum(payload))
+      ```
+    answers: ["204", "two hundred four"]
+    hidden_clues:
+      - "The checksum equals 204 when the question marks read 'hash'."
+      - "'lvl9seed' hints at the next puzzle."
+      - "'Stream' references data sums."
+    timed_hints:
+      - "Fill the question marks with a four-letter word that fits the theme."
+      - "Calculate the checksum of the resulting bytes."
+    forward_seeds:
+      - "The seed word is 'hash'. Remember it."
+  - id: 9
+    title: "Mirror Maze"
+    description: "uryyb-jbeyq@rot13.example"
+    prompt_embed:
+      title: "Level 9: Obfuscated Mail"
+      description: "The email hides its true text. Combine it with the previous seed."
+      footer: "Mirror the mirror."
+    answers: ["hello-hash@rot13.example", "hello hash", "hello hash rot13"]
+    hidden_clues:
+      - "ROT13 of the local part reveals 'hello-world'."
+      - "Replace 'world' with the seed from level 8."
+      - "Hyphen vs space both accepted."
+    timed_hints:
+      - "Decode using ROT13."
+      - "Swap 'world' for the level 8 keyword."
+    forward_seeds:
+      - "Final gate expects binary."
+  - id: 10
+    title: "Final Gate"
+    description: "01001000 01000001 01010011 01001000"
+    prompt_embed:
+      title: "Level 10: Core Dump"
+      description: "The binary spells a four-letter word."
+      footer: "Only hashes remain."
+    answers: ["hash"]
+    hidden_clues:
+      - "Each byte is ASCII binary for uppercase letters."
+      - "Forward seed already told you the word."
+      - "The footer repeats the answer subtly."
+    timed_hints:
+      - "Convert binary to ASCII."
+      - "Reuse the word you carried forward."
+    forward_seeds: []
